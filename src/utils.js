@@ -70,12 +70,12 @@ export const getFullMonthPeriod = date => ({
 
 export const getWeekDays = date => {
     const dates = [];
-    let currentDate = new Date(date);
-    const lastDayOfWeek = getLastDayOfWeek(currentDate);
+    let currentDate = getFirstDayOfWeek(date);
+    const lastDayOfWeek = compose(getLastDayOfWeek, addOneDay)(currentDate);
     let columnCounter = 0;
-    while (!isSameDay(currentDate, addOneDay(lastDayOfWeek))){
+    while (!isSameDay(currentDate, lastDayOfWeek)){
         dates[columnCounter++] = new Date(currentDate);
-        currentDate = addDays(currentDate, 1);
+        currentDate = addOneDay(currentDate);
     }
     return dates;
 };

@@ -1,8 +1,10 @@
+$calendar-width: 300px;
+
 .calendar {
-  width: 300px;
+  width: $calendar-width;
   height: auto;
   border: 1px solid black;
-
+  overflow: hidden;
   &-header {
     height: 30px;
     background: #d11919;

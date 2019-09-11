@@ -7,7 +7,7 @@ import Button from "../Button";
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 const Header = () => {
-    const { monthToShow, yearToShow, setYear, setMonth, setMonthAndYear } = useContext(CalendarContext);
+    const { monthToShow, yearToShow, setMonth, setMonthAndYear} = useContext(CalendarContext);
     const onPrevClick = () => {
         if(monthToShow === 0) {
             setMonthAndYear(11, yearToShow - 1);

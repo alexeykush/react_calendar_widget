@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import {CalendarContext} from "../context";
-import {isSameDay, isSameMonth, getFirstDayOfMonth} from "../../utils";
+import {isSameDay, isSameMonth} from "../../utils";
 
 const Day = ({ day }) => {
     const { setSelected, selected, monthToShow, yearToShow } = useContext(CalendarContext);

@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, {useContext} from 'react';
 
 import {CalendarContext} from "../context";
-import { getMonthDays } from "../../utils";
+import {getMonthDays} from "../../utils";
 import Week from "../Week";
 
 const Body = () => {
-    const { monthToShow, yearToShow } = useContext(CalendarContext);
+    const {monthToShow, yearToShow} = useContext(CalendarContext);
 
     const monthDays = getMonthDays(new Date(yearToShow, monthToShow));
     return (
