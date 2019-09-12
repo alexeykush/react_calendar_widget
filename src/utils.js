@@ -26,6 +26,17 @@ export const addDays = (date, days) => {
 
 export const addOneDay = date => addDays(date, 1);
 
+export const getPreviousMonth = date => {
+    const newDate = new Date(date);
+    return new Date(newDate.setMonth(newDate.getMonth() - 1));
+};
+
+export const getNextMonth = date => {
+    const newDate = new Date(date);
+    return new Date(newDate.setMonth(newDate.getMonth() + 1));
+};
+
+
 export const getFirstDayOfMonth = date => new Date(date.getFullYear(), date.getMonth(), 1);
 export const getLastDayOfMonth = date => new Date(date.getFullYear(), date.getMonth() + 1, 0);
 

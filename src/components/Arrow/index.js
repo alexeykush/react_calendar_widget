@@ -1,14 +1,14 @@
 import React from 'react';
 
 const directions = {
-    left: "<",
-    right: ">"
+    up: "fas fa-arrow-up",
+    down: "fas fa-arrow-down"
 };
 
 const Arrow = ({ direction, onClick }) => {
     return (
-        <div className="calendar-header__item arrow" onClick={onClick}>
-            {directions[direction]}
+        <div className="calendar-header-arrows__item" onClick={onClick}>
+            <i className={directions[direction]} />
         </div>
     );
 };

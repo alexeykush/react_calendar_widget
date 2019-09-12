@@ -1,41 +1,66 @@
 $calendar-width: 300px;
 
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .calendar {
   width: $calendar-width;
   height: auto;
-  border: 1px solid black;
   overflow: hidden;
+  background: #005FAC;
+  border: 1px solid grey;
+  border-left: none;
+  border-right: none;
+  color: #fff;
+
   &-header {
+    @include flex-between;
     height: 30px;
-    background: #d11919;
-    display: grid;
-    grid-template-columns: 40px 1fr 1fr 40px;
-    justify-items: center;
-    align-items: center;
     color: white;
     padding: 0;
 
-    &__item {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      cursor: pointer;
+    &-date {
+      @include flex-between;
 
-      &:hover {
-        background: #6e0505;
+      &__item {
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        padding: 0 5px;
       }
     }
 
-    .arrow {
-      font-size: 20px;
+    &-arrows {
+      @include flex-between;
+      height: 100%;
+      width: 60px;
+      &__item {
+        @include flex-center;
+        box-sizing: border-box;
+        font-size: 14px;
+        padding: 0 5px;
+        height: 100%;
+        width: 50%;
+        &:hover {
+          background: #0078D7;
+          cursor: pointer;
+        }
+      }
     }
+
   }
 
   &-weekdays {
     height: 30px;
-    background: #184080;
     color: white;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -43,30 +68,35 @@ $calendar-width: 300px;
     justify-items: center;
   }
 
-  &-body {
-    .calendar-days {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      align-items: center;
-      justify-items: center;
-      height: 40px;
-      &__item {
-        height: 100%;
-        width: 100%;
-        display: flex;
+  .calendar-body-wrapper {
+    overflow: hidden;
+    .calendar-body {
+      .calendar-days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
         align-items: center;
-        justify-content: center;
-        border-radius: 4px;
-        cursor: pointer;
-        &:hover {
-          background: #bec0c2;
+        justify-items: center;
+        height: 40px;
+
+        &__item {
+          @include flex-center;
+          height: 100%;
+          width: 100%;
+          border-radius: 4px;
+          cursor: pointer;
+
+          &:hover {
+            border: 2px solid #388ED0;
+          }
         }
-      }
-      &__item.active {
-        background: #6bb7e3;
-      }
-      &__item.disabled {
-        color: #8b8c8c;
+
+        &__item.active {
+          background: #0078D7;
+        }
+
+        &__item.disabled {
+          opacity: 0.5;
+        }
       }
     }
   }

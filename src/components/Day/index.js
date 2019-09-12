@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 
 import {CalendarContext} from "../context";
-import {isSameDay, isSameMonth} from "../../utils";
+import {getNextMonth, getPreviousMonth, isSameDay, isSameMonth} from "../../utils";
+import {swapTop, swapBottom} from "../../resources/js/animation";
 
 const Day = ({ day }) => {
     const { setSelected, selected, monthToShow, yearToShow } = useContext(CalendarContext);
@@ -16,10 +17,23 @@ const Day = ({ day }) => {
         return className;
     };
 
+    const onClick = () => {
+        const currentShowing = new Date(yearToShow, monthToShow);
+        const previousMonth = getPreviousMonth(currentShowing);
+        const nextMonth = getNextMonth(currentShowing);
+        if(isSameMonth(day, previousMonth)) {
+            swapTop();
+        } else if (isSameMonth(day, nextMonth)) {
+            swapBottom();
+        }
+        setSelected(day);
+    };
+
+
     return (
         <div
             className={getClassName()}
-            onClick={() => setSelected(day)}
+            onClick={onClick}
         >
             {day.getDate()}
         </div>

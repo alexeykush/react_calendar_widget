@@ -9,8 +9,10 @@ const Body = () => {
 
     const monthDays = getMonthDays(new Date(yearToShow, monthToShow));
     return (
-        <div className="calendar-body">
-            {monthDays.map((week, index) => <Week data={week} key={index}/>)}
+        <div className="calendar-body-wrapper">
+            <div className="calendar-body" id="calendar-body">
+                {monthDays.map((week, index) => <Week data={week} key={index}/>)}
+            </div>
         </div>
     );
 };
